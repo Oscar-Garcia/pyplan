@@ -1,4 +1,4 @@
-[![build-status-image]][travis]
+[![Build Status](https://travis-ci.org/Oscar-Garcia/pyplan.svg?branch=master)](https://travis-ci.org/Oscar-Garcia/pyplan)
 
 # Overview
 
