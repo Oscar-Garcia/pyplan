@@ -1,0 +1,7 @@
+pylint
+pytest
+pytest-sugar
+ipdb
+ipython
+flake8
+flake8-debugger
