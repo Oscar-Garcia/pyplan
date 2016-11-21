@@ -1,0 +1,22 @@
+language: python
+
+python:
+    - "3.5"
+
+sudo: false
+
+env:
+
+matrix:
+    fast_finish: true
+
+install:
+    - pip install requirements/devel.txt
+
+script:
+    - py.test
+
+after_success:
+
+notifications:
+    email: true
