@@ -1,3 +1,5 @@
+[![build-status-image]][travis]
+
 # Overview
 
 PyPlan is a Python library for building a planning engine to automatically decide the set of actions an agent should execute
