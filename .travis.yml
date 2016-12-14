@@ -14,7 +14,7 @@ install:
     - pip install -r requirements/devel.txt
 
 script:
-    - py.test
+    - pytest
 
 after_success:
 
