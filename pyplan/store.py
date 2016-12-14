@@ -22,12 +22,12 @@ class CollectionMap(ABC):
     """
 
     @abstractmethod
-    def all_records(self):
+    def all_keys(self):
         """
-        Get all values in the collection.
+        Get all keys of the values stored in the collection.
 
         Returns:
-            (iterator): An iterator over all the values stored in the collection.
+            (iterator): An iterator over all the keys in the collection.
         """
         raise NotImplementedError()
 
@@ -78,7 +78,7 @@ class MemoryCollectionMap(UserDict, CollectionMap):
     """
     A `CollectionMap` whose records are maintained in memory.
     """
-    def all_records(self):
+    def all_keys(self):
         return iter(self)
 
     def insert_record(self, key, record):
@@ -150,7 +150,7 @@ class ChainCollectionMap(CollectionMap):
     def __init__(self, chain):
         self.chain = chain
 
-    def all_records(self):
+    def all_keys(self):
         return iter(self.chain)
 
     def insert_record(self, key, record):

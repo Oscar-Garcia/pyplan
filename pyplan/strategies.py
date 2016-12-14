@@ -13,15 +13,15 @@ class PythonCodeError(Exception):
         return '%s("%s")' % (self.__class__.__name__, self.source_code)
 
 
-def succesors_generation(node: Node, domain: Graph, **kwargs):
+def succesors_generation(node: Node, domain: Graph, **kwargs):  # pylint: disable=unused-argument
     return domain.successors(domain.get_node(node.reference))
 
 
-def order_evaluation(nodes, open_nodes_counter, **kwargs):
+def order_evaluation(nodes, open_nodes_counter, **kwargs):  # pylint: disable=unused-argument
     return list(range(open_nodes_counter + len(nodes), open_nodes_counter, -1))
 
 
-def random_evaluation(nodes, search_space, **kwargs):
+def random_evaluation(nodes, search_space, **kwargs):  # pylint: disable=unused-argument
     raise NotImplementedError()
 
 

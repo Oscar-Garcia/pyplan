@@ -65,11 +65,11 @@ class Solver(object):  # pylint: disable=too-many-instance-attributes
     def create_init_frame(self, store: ScopeStore=None, search_space: Graph=None):
         return Frame(self, store, search_space)
 
-    def eval(self, *args, store: ScopeStore=None, search_space: Graph=None):
+    def eval(self, *args, store: ScopeStore=None, search_space: Graph=None, from_frame: Frame=None):
         current_nodes = args
-        search_space = search_space or SearchSpace(selector=self.selector)
-        store = store or get_default_scope_store()
-        frame = self.create_init_frame(store, search_space)
+        if not search_space:
+            search_space = from_frame.search_space if from_frame else SearchSpace(selector=self.selector)
+        frame = from_frame or self.create_init_frame(store or get_default_scope_store(), search_space)
         while not self.is_solution(**frame.ro_builtins):
             current_nodes = self.step(current_nodes, frame, search_space)
             frame.next_frame()
@@ -106,6 +106,7 @@ class Solver(object):  # pylint: disable=too-many-instance-attributes
                 setattr(node, 'weight', weight)
                 search_space.update_node(node)
                 search_space.open_node(node)
+        self.logger.debug('There are %d open nodes.', search_space.get_len_open_nodes())
 
     def select(self, frame: Frame, search_space: Graph):
         for selection in search_space.get_open_nodes():

@@ -28,7 +28,7 @@ class Graph(object):
         """
         Implements iterable protocol, this operation may be slow.
         """
-        return self._collection.all_nodes()
+        return (self.get_node(node_id) for node_id in self._collection.all_keys())
 
     def create_node(self, node_id=None, in_nodes=None, out_nodes=None, **kwargs):
         """
